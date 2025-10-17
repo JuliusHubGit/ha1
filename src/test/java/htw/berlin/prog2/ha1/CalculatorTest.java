@@ -2,6 +2,7 @@ package htw.berlin.prog2.ha1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -90,5 +91,54 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Point should be added to the End")
+    void testPressDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+
+        String expected = "1.3";
+        String actual = calc.readScreen();
+         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("After pressing the same button again, no result is beeing shown")
+    void testPressBinaryOperationKey(){
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+
+
+        String expected = "14.0";
+        String acutal = calc.readScreen();
+
+        assertEquals(expected, acutal);
+
+    }
+
+    @Test
+    @DisplayName("should give out Decimal number")
+    void testShowDecimalnumberWithoutException(){
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+
+        String exp = "1.1";
+        String act = calc.readScreen();
+
+        assertEquals(exp, act);
+    }
 }
 
