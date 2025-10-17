@@ -110,13 +110,17 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("+");
 
 
-        String expected = "14.0";
+        String expected = "10.0";
         String acutal = calc.readScreen();
 
         assertEquals(expected, acutal);

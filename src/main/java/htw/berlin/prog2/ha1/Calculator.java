@@ -64,9 +64,9 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        if(latestOperation.equals(operation)){
+        if("+-/x".contains(latestOperation)){
             double screenVal=Double.parseDouble(screen);
-            double erg = switch(operation){
+            double erg = switch(latestOperation){
                 case "+" -> latestValue + screenVal;
                 case "-" -> latestValue - screenVal;
                 case "x" -> latestValue * screenVal;
